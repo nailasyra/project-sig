@@ -498,7 +498,7 @@ document.querySelectorAll('.kategori-btn').forEach(btn => {
         map.getPane('pane_DataPerguruanTinggi_2').style['mix-blend-mode'] = 'normal';
         
         var customIcon = L.icon({
-            iconUrl: 'map/markers/icon.png',
+            iconUrl: 'Map/markers/icon.png',
             iconSize: [35, 35],
             iconAnchor: [17, 35],
             popupAnchor: [0, -35]
@@ -775,10 +775,10 @@ document.querySelectorAll('.kategori-btn').forEach(btn => {
         bounds_group.addLayer(layer_BatasWilayahKotaPekanbaru_4);
         map.addLayer(layer_BatasWilayahKotaPekanbaru_4);
         var overlaysTree = [
-            {label: '<img src="map/legend/BatasWilayahKotaPekanbaru_4.png" /> Batas Wilayah Kota Pekanbaru ', layer: layer_BatasWilayahKotaPekanbaru_4},
-            {label: '<img src="map/legend/JalanArteri_3.png" /> Jalan Arteri ', layer: layer_JalanArteri_3},
-            {label: '<img src="map/legend/DataPerguruanTinggi_2.png" /> Data Perguruan Tinggi', layer: layer_DataPerguruanTinggi_2},
-            {label: 'kepadatan perguruan tinggi — administrasi_ar_kecamatan<br /><table><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_TidakTerdapatperguruanTinggi0.png" /></td><td>Tidak Terdapat perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_1PerguruanTinggi1.png" /></td><td>1 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_2PerguruanTinggi2.png" /></td><td>2 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_3PerguruanTinggi3.png" /></td><td>3 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_4PerguruanTinggi4.png" /></td><td>4 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_5PerguruanTinggi5.png" /></td><td>5 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_6PerguruanTinggi6.png" /></td><td>6 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_8PerguruanTinggi7.png" /></td><td>8 Perguruan Tinggi</td></tr></table>', layer: layer_kepadatanperguruantinggiadministrasi_ar_kecamatan_1},
+            {label: '<img src="Map/legend/BatasWilayahKotaPekanbaru_4.png" /> Batas Wilayah Kota Pekanbaru ', layer: layer_BatasWilayahKotaPekanbaru_4},
+            {label: '<img src="Map/legend/JalanArteri_3.png" /> Jalan Arteri ', layer: layer_JalanArteri_3},
+            {label: '<img src="Map/legend/DataPerguruanTinggi_2.png" /> Data Perguruan Tinggi', layer: layer_DataPerguruanTinggi_2},
+            {label: 'kepadatan perguruan tinggi — administrasi_ar_kecamatan<br /><table><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_TidakTerdapatperguruanTinggi0.png" /></td><td>Tidak Terdapat perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_1PerguruanTinggi1.png" /></td><td>1 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_2PerguruanTinggi2.png" /></td><td>2 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_3PerguruanTinggi3.png" /></td><td>3 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_4PerguruanTinggi4.png" /></td><td>4 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_5PerguruanTinggi5.png" /></td><td>5 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_6PerguruanTinggi6.png" /></td><td>6 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_8PerguruanTinggi7.png" /></td><td>8 Perguruan Tinggi</td></tr></table>', layer: layer_kepadatanperguruantinggiadministrasi_ar_kecamatan_1},
             {label: "CartoDb Positron", layer: layer_CartoDbPositron_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
