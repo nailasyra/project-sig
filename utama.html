@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguruan tinggi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- dari qgis-->
+    <link rel="stylesheet" href="Map/css/leaflet.css">
+    <link rel="stylesheet" href="Map/css/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="Map/css/qgis2web.css">
+    <link rel="stylesheet" href="Map/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="Map/css/leaflet.photon.css">
+    <link rel="stylesheet" href="Map/css/MarkerCluster.css">
+    <link rel="stylesheet" href="Map/css/L.Control.Layers.Tree.css">
+  </head>
+
+<body >
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex justify-content-center">
+      <a class="navbar-brand" href="#">PERSEBARAN PERGURUAN TINGGI DI KOTA PEKANBARU</a>
+    </div>
+  </div>
+</nav>
+
+<div>
+    <img class="baner"src="foto/pku2.jpg" class="img-fluid rounded-4 mt-4" alt="">
+</div>
+
+<div class="d-flex justify-content-center my-4">
+  <div class="card shadow-lg border-0" style="max-width: 90%; border-radius: 16px; overflow: hidden;">
+    
+    <div class="row g-0 align-items-center">
+      
+      <div class="col-md-4">
+        <img src="foto/peta.jpg" class="img-fluid h-100" style="object-fit: cover;" alt="Peta Persebaran">
+      </div>
+
+      <div class="col-md-8">
+        <div class="card-body p-4">
+          <h4 class="card-title fw-bold">Peta Persebaran Lokasi</h4>
+          
+          <p class="card-text text-secondary">
+            Peta ini menampilkan sebaran lokasi secara geografis yang membantu pengguna dalam memahami 
+            distribusi titik-titik penting pada suatu wilayah. Visualisasi ini memudahkan analisis spasial, 
+            perbandingan lokasi, serta pengambilan keputusan berbasis data geografis.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- BUTTON -->
+
+  <div class="text-center mt-4 mb-2">
+
+    <button class="kategori-btn active" data-kategori="semua">
+      SEMUA
+    </button>
+
+    <button class="kategori-btn" data-kategori="universitas">
+      UNIVERSITAS
+    </button>
+
+    <button class="kategori-btn" data-kategori="institut">
+      INSTITUT
+    </button>
+
+    <button class="kategori-btn" data-kategori="sekolah tinggi">
+      SEKOLAH TINGGI
+    </button>
+
+    <button class="kategori-btn" data-kategori="politeknik">
+      POLITEKNIK
+    </button>
+
+    <button class="kategori-btn" data-kategori="akademi">
+      AKADEMI
+    </button>
+
+    
+
+  </div>
+
+
+  <!-- SWIPER -->
+
+  <div class="swiper mySwiper">
+
+    <div class="swiper-wrapper" id="swiperWrapper">
+
+      <!-- CARD 1 -->
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://unri.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/unri.jpg">
+          <div class="card-body">
+            <h5>Universitas Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="swiper-slide" data-kategori="politeknik" data-url="https://policaltex.id/">
+        <div class="card kampus-card">
+          <img src="foto/pcr.jpg">
+          <div class="card-body">
+            <h5>Politeknik Caltex Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://umri.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/universitas-muhammadiyah-riau.jpg">
+          <div class="card-body">
+            <h5>Universitas Muhammadiyah Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://uir.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/uir.jpg">
+          <div class="card-body">
+            <h5>Universitas Islam Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://upbi.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/persada-bunda.jpg">
+          <div class="card-body">
+            <h5>Universitas Persada Bunda</h5>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide" data-kategori="akademi" data-url="https://akbidlaksamana.ac.id//">
+
+        <div class="card kampus-card">
+          <img src="foto/akbidlaksamna.jpg">
+          <div class="card-body">
+            <h5>Akademi Kebidanan Laksamana</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://rokania.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/rokania.jpg">
+          <div class="card-body">
+            <h5>Universitas Rokania kampus II</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="akademi" data-url="https://amikmahaputra.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/amikmahaputra.jpg">
+          <div class="card-body">
+            <h5>Amik Mahaputra Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://stieriau-akbar.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/stie.jpg">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Ilmu Ekonomi Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://stifar-riau.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/stifar.jpg">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Ilmu Farmasi Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://univ.htp.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/univ hangtuah.jpg">
+          <div class="card-body">
+            <h5>Universitas Hang Tuah</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="institut" data-url="https://ibtpi.pelitaindonesia.ac.id/v3/home/">
+        <div class="card kampus-card">
+          <img src="foto/intitut pelita.jpg">
+          <div class="card-body">
+            <h5>Institut Bisnis Dan Teknologi Pelita Indonesia</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://stpriau.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/stpriau.jpg">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Pariwisata Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://sttp-yds.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/stt.jpg">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Teknologi Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://stikes-tengkumaharatu.ac.id/home">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Ilmu Kesehatan Tengku Maharatu</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="institut" data-url="https://iptar.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Institut Pendidikan dan Teknologi Aisyiyah Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://www.usti.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Universitas Sains dan Teknologi Indonesia</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://www.stmikdharmapalariau.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Manajemen Informatika dan Komputer Dharmapala Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://univrab.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/univrab.jpeg">
+          <div class="card-body">
+            <h5>Universitas Abdurrab</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="akademi" data-url="https://dhpku.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Akademi Kebidanan Dharma Husada Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="institut" data-url="https://ikh.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Institut Kesehatan Helvetia Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="akademi" data-url="https://dhpku.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Akademi Keperawatan Dharma Husada Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="akademi" data-url="https://akjp2.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/jon paul.jpg">
+          <div class="card-body">
+            <h5>Akademi Kesehatan John Paul II Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="institut" data-url="https://itbriau.info/">
+        <div class="card kampus-card">
+          <img src="foto/itbm.jpg">
+          <div class="card-body">
+            <h5>Institut Teknologi dan Bisnis Master</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="politeknik" data-url=" https://pkr.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Politeknik kesehatan Kementrian kesehatan Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://www.maitreyawira.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Agama Buddha Maitreyawira</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://stai-mujtahadah.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Agama Islam Al-Mujtahadah Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://lpm.stiedharmaputra.ac.id/profi">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Ilmu Ekonomi Dharma Putra Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="institut" data-url="https://stai-imsya.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Institut Agama Islam IMSYA Indonesia.</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="institut" data-url="https://www.payungnegeri.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Institut Kesehatan Payung Negeri</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://sttperiago.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Teologi Periago Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://staialazharpekanbaru.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Agama Islam Al-Azhar Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="institut" data-url="https://diniyyah.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5> Institut Agama Islam Diniyyah Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="institut" data-url="https://www.iai-le.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Institut Agama islam Lukman EDY</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://akupintar.id/universitas/-/kampus/detail-kampus/sekolah-tinggi-ekonomi-islam-iqra-annisa/profil">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Ekonomi Islam Iqra Annisa Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url=" https://stie-mahaputra-riau.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Ilmu Ekonomi Mahaputra Riau</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="institut" data-url="https://www.ikta.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Institut Kesehatan dan Teknologi Al Insyirah</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://univawalbros.ac.id/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Universitas Awal Bros Pekanbaru</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://akupintar.id/universitas/-/kampus/detail-kampus/stikes-pekanbaru-medical-center/profil">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Ilmu Kesehatan Pekanbaru Medical Center</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="sekolah tinggi" data-url="https://sttstar.pmbonline.siakad.tech/">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Sekolah Tinggi Teologi ARASTAMAR RIAU</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide" data-kategori="universitas" data-url="https://www.uin-suska.ac.id/">
+        <div class="card kampus-card">
+          <img src="foto/uin.jpg">
+          <div class="card-body">
+            <h5>Universitas Islam Negeri Sultan Syarif Kasim Riau</h5>
+          </div>
+        </div>
+      </div>
+
+       <div class="swiper-slide" data-kategori="universitas" data-url="https://dev.unilak.ac.id/profil/tentang-unilak">
+        <div class="card kampus-card">
+          <img src="https://picsum.photos/300/200?1">
+          <div class="card-body">
+            <h5>Universitas Lancang Kuning</h5>
+          </div>
+        </div>
+      </div>
+
+      
+
+
+    </div>
+
+    <!-- PANAH -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div class="empty-state" id="emptyState">
+    Tidak ada perguruan tinggi dalam kategori ini.
+  </div>
+
+
+
+<div class="container page-wrapper">
+
+        <div id="map"></div>
+
+</div>
+
+<div class="page-footer">
+            &copy; 2025 Sistem Informasi Akademik — Universitas Riau
+        </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+   
+<!-- Script Peta -->
+<script src="map/js/qgis2web_expressions.js"></script>
+<script src="map/js/leaflet.js"></script>
+<script src="map/js/L.Control.Layers.Tree.min.js"></script>
+<script src="map/js/leaflet-svg-shape-markers.min.js"></script>
+<script src="map/js/leaflet.rotatedMarker.js"></script>
+<script src="map/js/leaflet.pattern.js"></script>
+<script src="map/js/leaflet-hash.js"></script>
+<script src="map/js/Autolinker.min.js"></script>
+<script src="map/js/rbush.min.js"></script>
+<script src="map/js/labelgun.min.js"></script>
+<script src="map/js/labels.js"></script>
+<script src="map/js/leaflet.photon.js"></script>
+
+<!-- Jika export menggunakan clustering marker -->
+<script src="map/js/leaflet.markercluster.js"></script>
+
+<!-- Jika export menggunakan VectorGrid -->
+<script src="map/js/Leaflet.VectorGrid.js"></script>
+
+<!-- Data -->
+<script src="Map/data/BatasWilayahKotaPekanbaru_4.js"></script>
+<script src="Map/data/DataPerguruanTinggi_2.js"></script>
+<script src="Map/data/JalanArteri_3.js"></script>
+<script src="Map/data/kepadatanperguruantinggiadministrasi_ar_kecamatan_1.js"></script>
+
+<!-- JS SENDIRI -->
+<script src="script.js"></script>
+
+
+</body>
+</html>
