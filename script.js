@@ -1,84 +1,60 @@
-// Ambil semua slide asli
-const allSlides = Array.from(document.querySelectorAll('.swiper-slide'));
-
-// Inisialisasi Swiper
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 4,
-  spaceBetween: 20,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  breakpoints: {
-    0:   { slidesPerView: 1 },
-    576: { slidesPerView: 2 },
-    768: { slidesPerView: 3 },
-    992: { slidesPerView: 4 },
-  }
-});
-
-// Klik card → buka website
-document.getElementById('swiperWrapper').addEventListener('click', function (e) {
-  const slide = e.target.closest('.swiper-slide');
-
-  if (slide && slide.dataset.url) {
-    window.open(slide.dataset.url, '_blank');
-  }
-});
-
-// Fungsi filter
-function filterKategori(kategori) {
-
-  const wrapper = document.getElementById('swiperWrapper');
-  const emptyState = document.getElementById('emptyState');
-
-  // Kosongkan swiper
-  wrapper.innerHTML = '';
-
-  // Filter data
-  const filtered = kategori === 'semua'
-    ? allSlides
-    : allSlides.filter(slide => slide.dataset.kategori === kategori);
-
-  // Jika kosong
-  if (filtered.length === 0) {
-    emptyState.style.display = 'block';
-    document.querySelector('.mySwiper').style.display = 'none';
-  } else {
-
-    emptyState.style.display = 'none';
-    document.querySelector('.mySwiper').style.display = 'block';
-
-    // Masukkan slide lagi
-    filtered.forEach(slide => {
-      wrapper.appendChild(slide);
-    });
-
-    // Update swiper
-    swiper.update();
-    swiper.slideTo(0);
-  }
-}
-
-// Event tombol kategori
-document.querySelectorAll('.kategori-btn').forEach(btn => {
-
-  btn.addEventListener('click', function () {
-
-    // Active button
-    document.querySelectorAll('.kategori-btn')
-      .forEach(b => b.classList.remove('active'));
-
-    this.classList.add('active');
-
-    // Jalankan filter
-    filterKategori(this.dataset.kategori);
-
+  /* ── Navbar scroll shadow ── */
+  window.addEventListener('scroll', () => {
+    document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 30);
   });
 
-});
-   
- var map = L.map('map', {
+  /* ── Scroll reveal ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+  /* ── Swiper ── */
+  const allSlides = Array.from(document.querySelectorAll('.swiper-slide'));
+
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    breakpoints: {
+      0:   { slidesPerView: 1 },
+      576: { slidesPerView: 2 },
+      768: { slidesPerView: 3 },
+      992: { slidesPerView: 4 },
+    }
+  });
+
+  document.getElementById('swiperWrapper').addEventListener('click', e => {
+    const slide = e.target.closest('.swiper-slide');
+    if (slide && slide.dataset.url) window.open(slide.dataset.url, '_blank');
+  });
+
+  function filterKategori(kategori) {
+    const wrapper = document.getElementById('swiperWrapper');
+    const emptyState = document.getElementById('emptyState');
+    wrapper.innerHTML = '';
+    const filtered = kategori === 'semua' ? allSlides : allSlides.filter(s => s.dataset.kategori === kategori);
+    if (filtered.length === 0) {
+      emptyState.style.display = 'block';
+      document.querySelector('.mySwiper').style.display = 'none';
+    } else {
+      emptyState.style.display = 'none';
+      document.querySelector('.mySwiper').style.display = 'block';
+      filtered.forEach(s => wrapper.appendChild(s));
+      swiper.update(); swiper.slideTo(0);
+    }
+  }
+
+  document.querySelectorAll('.kategori-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.kategori-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      filterKategori(this.dataset.kategori);
+    });
+  });
+  
+
+var map = L.map('leaflet-map', {
             zoomControl:false, maxZoom:28, minZoom:1
         }).fitBounds([[0.4539686113595321,101.32943658450726],[0.5709006193797859,101.56116810243024]]);
         var hash = new L.Hash(map);
@@ -498,7 +474,7 @@ document.querySelectorAll('.kategori-btn').forEach(btn => {
         map.getPane('pane_DataPerguruanTinggi_2').style['mix-blend-mode'] = 'normal';
         
         var customIcon = L.icon({
-            iconUrl: 'Map/markers/icon.png',
+            iconUrl: 'map/markers/icon.png',
             iconSize: [35, 35],
             iconAnchor: [17, 35],
             popupAnchor: [0, -35]
@@ -775,10 +751,10 @@ document.querySelectorAll('.kategori-btn').forEach(btn => {
         bounds_group.addLayer(layer_BatasWilayahKotaPekanbaru_4);
         map.addLayer(layer_BatasWilayahKotaPekanbaru_4);
         var overlaysTree = [
-            {label: '<img src="Map/legend/BatasWilayahKotaPekanbaru_4.png" /> Batas Wilayah Kota Pekanbaru ', layer: layer_BatasWilayahKotaPekanbaru_4},
-            {label: '<img src="Map/legend/JalanArteri_3.png" /> Jalan Arteri ', layer: layer_JalanArteri_3},
-            {label: '<img src="Map/legend/DataPerguruanTinggi_2.png" /> Data Perguruan Tinggi', layer: layer_DataPerguruanTinggi_2},
-            {label: 'kepadatan perguruan tinggi — administrasi_ar_kecamatan<br /><table><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_TidakTerdapatperguruanTinggi0.png" /></td><td>Tidak Terdapat perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_1PerguruanTinggi1.png" /></td><td>1 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_2PerguruanTinggi2.png" /></td><td>2 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_3PerguruanTinggi3.png" /></td><td>3 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_4PerguruanTinggi4.png" /></td><td>4 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_5PerguruanTinggi5.png" /></td><td>5 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_6PerguruanTinggi6.png" /></td><td>6 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="Map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_8PerguruanTinggi7.png" /></td><td>8 Perguruan Tinggi</td></tr></table>', layer: layer_kepadatanperguruantinggiadministrasi_ar_kecamatan_1},
+            {label: '<img src="map/legend/BatasWilayahKotaPekanbaru_4.png" /> Batas Wilayah Kota Pekanbaru ', layer: layer_BatasWilayahKotaPekanbaru_4},
+            {label: '<img src="map/legend/JalanArteri_3.png" /> Jalan Arteri ', layer: layer_JalanArteri_3},
+            {label: '<img src="map/legend/DataPerguruanTinggi_2.png" /> Data Perguruan Tinggi', layer: layer_DataPerguruanTinggi_2},
+            {label: 'kepadatan perguruan tinggi — administrasi_ar_kecamatan<br /><table><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_TidakTerdapatperguruanTinggi0.png" /></td><td>Tidak Terdapat perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_1PerguruanTinggi1.png" /></td><td>1 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_2PerguruanTinggi2.png" /></td><td>2 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_3PerguruanTinggi3.png" /></td><td>3 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_4PerguruanTinggi4.png" /></td><td>4 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_5PerguruanTinggi5.png" /></td><td>5 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_6PerguruanTinggi6.png" /></td><td>6 Perguruan Tinggi</td></tr><tr><td style="text-align: center;"><img src="map/legend/kepadatanperguruantinggiadministrasi_ar_kecamatan_1_8PerguruanTinggi7.png" /></td><td>8 Perguruan Tinggi</td></tr></table>', layer: layer_kepadatanperguruantinggiadministrasi_ar_kecamatan_1},
             {label: "CartoDb Positron", layer: layer_CartoDbPositron_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
